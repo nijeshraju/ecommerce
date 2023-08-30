@@ -8,7 +8,7 @@ export const apiSlice = createApi({
             query: () => '/'
         }),
         getProduct: builder.query({
-            query: postId => `/${postId}`
+            query: id => `/${id}`
         })
     })
 })

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { useGetProductsQuery } from '../features/api/apiSlice'
 import Header from "../components/Header";

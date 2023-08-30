@@ -9,7 +9,7 @@ const ROUTER = [
         component: Product,
     },
     {
-        url: "/detail",
+        url: "/detail/:id",
         component: Detail,
     },
     {

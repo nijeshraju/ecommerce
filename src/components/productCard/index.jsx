@@ -1,13 +1,16 @@
 
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 function ProductCard({ productData }) {
+    const navigate = useNavigate();
+
     return (
         <div className="item">
             <img
                 src={productData?.thumbnail}
                 alt=""
-            // onClick={() => img_handleclick(productData?.id?.stringValue)}
+                onClick={() => navigate(`detail/${productData?.id}`)}
             />
             <div className="text">
                 <p>{productData?.title}</p>
