@@ -22,7 +22,7 @@ function Footer() {
                         <h6>Mail Us:</h6>
                         <ul>
                             <p>
-                                Shopindeed Internet Private Limited,
+                                Ecommerce Internet Private Limited,
                                 Buildings Alyssa, Begonia &
                                 Clove Bathery Village,
                                 Outer Ring Road Village,

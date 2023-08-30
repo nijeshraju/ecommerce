@@ -2,7 +2,7 @@ import React from "react";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Header() {
+function Header({ query, setQuery }) {
     return (
         <div className="main-nav">
             <section className="g-navbar">
@@ -16,7 +16,7 @@ function Header() {
                             </div>
 
                             <div className="search-bar">
-                                <input type="text" placeholder="Serch for products" />
+                                <input type="text" placeholder="Serch for products" value={query} onChange={(e) => setQuery(e.target.value)} />
                             </div>
 
                             <div className="cart-icons">

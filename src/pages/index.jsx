@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Footer from "../components/Footer";
 import { useGetProductsQuery } from '../features/api/apiSlice'
 import Header from "../components/Header";
 import ProductCard from "../components/productCard";
 
 function Product() {
-    const { data } = useGetProductsQuery();
-    const productsData = data?.products || [];
-    console.log(data);
+    const { data , isLoading, isSuccess } = useGetProductsQuery();
+    const [productsData, setProductsData] = useState([]);
+    const [query, setQuery] = useState("");
+
+    useEffect(() => {
+        setProductsData(data?.products);
+    }, [data?.products]);
+
+    useEffect(() => {
+        const queryLower = query.toLowerCase();
+        setProductsData(data?.products?.filter((product) => product.title.toLowerCase().includes(queryLower) || product.category.toLowerCase().includes(queryLower)));
+    }, [query]);
+
     return (
         <div>
-            <Header />
+            <Header query={query} setQuery={setQuery} />
 
             <section className="product-section sprt">
                 <div className="container">
