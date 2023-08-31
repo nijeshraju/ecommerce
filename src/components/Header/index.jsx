@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CartContext } from '../../context/cart';
 
 function Header({ query, setQuery }) {
+    const { getCartQuantity } = useContext(CartContext);
+
     return (
         <div className="main-nav">
             <section className="g-navbar">
@@ -20,8 +23,9 @@ function Header({ query, setQuery }) {
                             </div>
 
                             <div className="cart-icons">
-                                <a href="/Cart">
+                                <a href="/Cart" className="cart-outer">
                                     <FontAwesomeIcon icon={faShoppingCart} />
+                                    <div className="cart-count">{getCartQuantity()}</div>
                                 </a>
                             </div>
                         </div>

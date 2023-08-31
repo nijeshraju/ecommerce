@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from 'react-router-dom';
-import { useGetProductQuery } from '../features/api/apiSlice';
-import { Carousel } from 'react-responsive-carousel';
+import { useGetProductQuery } from "../features/api/apiSlice";
+import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../components/Footer";
 import Header2 from "../components/Header2";
+import { CartContext } from "../context/cart";
 
 function Detail() {
     const { id } = useParams();
     const { data, isLoading, isSuccess } = useGetProductQuery(id);
+    const { cartItems, addToCart } = useContext(CartContext)
 
     return (
         <div>
@@ -42,13 +44,13 @@ function Detail() {
                             <div className="brand">{data?.category} {'>'} {data?.brand}</div>
                             <div className="price">
                                 <p>
-                                    <span className="main-text">₹ {data?.price - (data?.price * Math.round(data?.discountPercentage) / 100)}</span>
-                                    <span className="gray-text">₹ {data?.price} </span>
+                                    <span className="main-text">$ {data?.price - (data?.price * Math.round(data?.discountPercentage) / 100)}</span>
+                                    <span className="gray-text">$ {data?.price} </span>
                                     <span className="green-text">{Math.round(data?.discountPercentage)}% off</span>
                                 </p>
                             </div>
 
-                            <div class="stock">
+                            <div className="stock">
                                 <p>
                                     Usually delivered in 7 days? Enter pincode for exact
                                     delivery dates/charges View Details
@@ -63,8 +65,8 @@ function Detail() {
                                 </div>
                             </div>
 
-                            <div class="cart-buttons">
-                                <button className="cart">ADD TO CART</button>
+                            <div className="cart-buttons">
+                                <button onClick={() => addToCart(data)} className="cart">ADD TO CART</button>
                             </div>
                         </div>
                     </div>
