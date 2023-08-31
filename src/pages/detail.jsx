@@ -1,71 +1,75 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
 import { useGetProductQuery } from '../features/api/apiSlice';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../components/Footer";
+import Header2 from "../components/Header2";
 
 function Detail() {
-    const { data, isLoading, isSuccess } = useGetProductQuery(1);
+    const { id } = useParams();
+    const { data, isLoading, isSuccess } = useGetProductQuery(id);
 
-    console.log({ data });
     return (
         <div>
-            <section class="details-section">
-                <div class="container">
-                    <div class="details-box ">
-                        <div class="product">
-                            <div class="top-product">
-                                <img
-                                    src={data?.thumbnail}
-                                    alt=""
-                                />
-                            </div>
-                            <div class="bottom">
-                                {data?.images?.map((item3) => {
+            <Header2 />
+
+            <section className="details-section">
+                <div className="container">
+                    <div className="details-box ">
+                        <div className="product-image">
+                            <Carousel>
+                                {data?.images && data?.images?.map((image, index) => {
                                     return (
-                                        <div class="item">
-                                            <img src={item3.imgmodel} alt=""/>
+                                        <div key={index} className="item">
+                                            <img src={image} alt="" />
                                         </div>
                                     );
                                 })}
-                            </div>
+                            </Carousel>
                         </div>
 
-                        <div class="detail">
-                            <div class="text">
+                        <div className="detail">
+                            <h3>{data?.title}</h3>
+
+                            <div>
+                                <span className="rating">
+                                    <span>{data?.rating.toFixed(1)}</span>
+                                    <img src="/star.svg" alt="star" />
+                                </span>
+                                <span className="reviews">40 Ratings & 16 Reviews</span>
+                            </div>
+                            <div className="brand">{data?.category} {'>'} {data?.brand}</div>
+                            <div className="price">
                                 <p>
-                                    {data?.description}
+                                    <span className="main-text">₹ {data?.price - (data?.price * Math.round(data?.discountPercentage) / 100)}</span>
+                                    <span className="gray-text">₹ {data?.price} </span>
+                                    <span className="green-text">{Math.round(data?.discountPercentage)}% off</span>
                                 </p>
-                                <h3>₹ {data?.price}</h3>
-                                <h6>
-                                    <span> ₹23,99.00 </span>
-                                    {data?.offer?.stringValue}
-                                </h6>
                             </div>
 
-                            <div class="barand-details">
-                                <div class="first-text">
-                                    <h6>
-                                        {data?.text?.stringValue}
-                                    </h6>
-                                    <p>
-                                        {data?.description}
-                                    </p>
-                                </div>
-                                <div class="second-text">
-                                    <h6>Product Details</h6>
+                            <div class="stock">
+                                <p>
+                                    Usually delivered in 7 days? Enter pincode for exact
+                                    delivery dates/charges View Details
+                                </p>
+                            </div>
 
-                                    <div class="forth-text">
-                                        <p>
-                                            Usually delivered in 7 days? Enter pincode for exact
-                                            delivery dates/charges View Details
-                                        </p>
-                                    </div>
+                            <div className="product-description">
+                                <h6>Product Description</h6>
+
+                                <div className="description">
+                                    <p>{data?.description}</p>
                                 </div>
+                            </div>
+
+                            <div class="cart-buttons">
+                                <button className="cart">ADD TO CART</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
 
             <Footer />
         </div>

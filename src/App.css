@@ -104,10 +104,10 @@ h6 {
 
 .top-nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  padding: 27px 0;
+  padding: 25px 50px;
 }
 
 .search-bar {
@@ -209,6 +209,110 @@ h6 {
 }
 
 /* product section end */
+
+/* Details page start */
+
+.carousel .slide img {
+  width: auto !important;
+  vertical-align: top;
+  height: 250px;
+  border: 0;
+}
+
+.carousel .thumbs-wrapper {
+  text-align: center;
+}
+
+.details-section {
+  padding-top: 160px;
+  padding-bottom: 50px;
+}
+
+.details-section .details-box {
+  display: flex;
+}
+
+.details-box .product-image {
+  width: 50%;
+  padding-right: 32px;
+}
+
+.details-box .detail {
+  width: 50%;
+  max-width: 496px;
+  padding-left: 32px;
+}
+
+.details-box .detail .rating {
+  line-height: normal;
+  display: inline-block;
+  color: #fff;
+  padding: 2px 4px 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 12px;
+  vertical-align: middle;
+  background-color: #388e3c;
+}
+
+.details-box .detail .reviews {
+  padding-left: 8px;
+  font-weight: 500;
+  color: #878787;
+}
+
+.details-box .detail .brand {
+  color: #878787;
+  padding-top: 15px;
+}
+
+.details-box .detail .price {
+  padding-top: 15px;
+}
+
+.details-box .detail .price .main-text {
+  font-size: 20px;
+  margin-left: 12px;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.details-box .detail .price .gray-text {
+  font-size: 16px;
+  margin-left: 12px;
+  vertical-align: middle;
+  color: #878787;
+  text-decoration: line-through;
+}
+
+.details-box .detail .price .green-text {
+  margin-left: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #388e3c;
+  vertical-align: middle;
+}
+
+.details-box .cart-buttons {
+  padding-top: 20px;
+}
+
+.details-box .cart {
+  padding: 18px 8px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
+  width: 98%;
+  border: none;
+  float: left;
+  background: #ff9f00;
+  color: #ffffff;
+}
+
+.details-box .product-description {
+  padding-top: 20px;
+}
+
+/* Details page end */
 
 
 /* footer-section start */
